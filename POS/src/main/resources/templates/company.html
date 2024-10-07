@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Company List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Additional custom styles */
+        .add-store-link {
+            margin: 20px 0;
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            align-items: center;
+        }
+
+
+        .table thead th {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .table td, .table th {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 style="text-align: center">Company List</h1>
+
+    <a href="http://localhost:8080/register/store"  class="add-store-link" style="align-items: center">Add store</a>
+
+    <table class="table table-striped table-hover table-bordered table-sm">
+
+        <thead>
+        <tr>
+            <th>Company Name</th>
+            <th>Company Location</th>
+            <th>Company Logo</th>
+            <th>Company Email</th>
+            <th>Company Phone Number</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over the list of companies -->
+        <tr th:each="company : ${companies}">
+            <td th:text="${company.companyName}"></td>
+            <td th:text="${company.companyLocation}"></td>
+            <td th:text="${company.companyLogo}"></td>
+            <td th:text="${company.companyEmail}"></td>
+            <td th:text="${company.companyPhoneNumber}"></td>
+
+            <td><a th:href="@{ formupdate/{id} (id=${company.id})}" class="btn btn-custom btn-block">Update </a> </td>
+        </tr>
+        
+        </tbody>
+    </table>
+
+
+</div>
+</body>
+</html>
